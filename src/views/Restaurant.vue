@@ -1,12 +1,12 @@
 <template>
-  <RestaurantDetail />
+  <Restaurant/>
 </template>
 
 <script>
-import RestaurantDetail from "@/components/RestaurantDetail";
+import Restaurant from "@/components/Restaurant";
 export default {
   components: {
-    RestaurantDetail,
+    Restaurant,
   },
 }
 </script>

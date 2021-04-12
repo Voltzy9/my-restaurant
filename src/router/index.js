@@ -12,8 +12,8 @@ const routes = [
     component: Home
   },
   {
-    path: '/restaurant/:id',
-    name: 'restaurant',
+    path: '/:restaurant',
+    name: 'Restaurant',
    component: Restaurant,
   }
 ]

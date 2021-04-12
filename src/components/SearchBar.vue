@@ -6,7 +6,7 @@
           lg="3"
       >
         <v-text-field
-            v-model="restaurantName"
+            v-model="nameRestaurant"
             placeholder="Rechercher par nom"
             solo
         />
@@ -41,7 +41,7 @@
           md="2"
           lg="3"
       >
-        Trier par note (min & max)
+        Trier par note
         <v-range-slider
             v-model="ratingRange"
             :max="5"
@@ -76,7 +76,7 @@ export default {
 
   data() {
     return  {
-      restaurantName: '',
+      nameRestaurant: '',
       isOpen: false,
       selectedCategories: [],
       ratingRange: [1,5],
@@ -96,16 +96,24 @@ export default {
 
   methods: {
     search() {
-      const paramaters = {};
+        const parameters = {};
+
+        if (this.nameRestaurant.length) {
+          parameters.nameRestaurant =this.nameRestaurant;
+        }
+
+        if (this.selectedCategories.length) {
+          parameters.categories = this.selectedCategories.join();
+        }
+
+        parameters.open = this.isOpen;
+
+        this.$store.dispatch('searchRestaurants', parameters);
     }
   }
-}
+};
 
 </script>
 
 <style scoped>
-.background {
-  background: rgb(156, 156, 118);
-}
-
 </style>
